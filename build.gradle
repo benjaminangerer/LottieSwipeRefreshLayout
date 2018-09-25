@@ -20,7 +20,7 @@ buildscript {
     ext.libraries = [
             android_appcompat  : "com.android.support:appcompat-v7:$android_support_version",
             design_support     : "com.android.support:design:$android_support_version",
-            kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+            kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             lottie             : "com.airbnb.android:lottie:$lottie_version",
             rxjava2            : "io.reactivex.rxjava2:rxjava:$rxjava_version",
             rxandroid          : "io.reactivex.rxjava2:rxandroid:$rxandroid_version",
