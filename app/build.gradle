@@ -31,13 +31,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(':lib')
+    implementation project(':lib')
 
-    testCompile(libraries.junit)
+    testImplementation(libraries.junit)
 
-    compile(
+    implementation(
             libraries.android_appcompat,
             libraries.design_support,
             libraries.kotlin,
