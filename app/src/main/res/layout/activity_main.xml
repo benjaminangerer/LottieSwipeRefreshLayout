@@ -5,7 +5,7 @@
                                        android:layout_width="match_parent"
                                        android:layout_height="match_parent"
                                        app:max_offset_top="250dp"
-                                       app:pull_to_refresh_lottieFile="@raw/pull_to_refresh"
+                                       app:pull_to_refresh_lottieFile="pull_to_refresh.json"
                                        app:trigger_offset_top="125dp">
 
     <android.support.v7.widget.RecyclerView

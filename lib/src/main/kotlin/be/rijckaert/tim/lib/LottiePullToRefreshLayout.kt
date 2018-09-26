@@ -2,6 +2,8 @@ package be.rijckaert.tim.lib
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
+import android.util.TypedValue
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import com.airbnb.lottie.LottieAnimationView
@@ -11,13 +13,14 @@ class LottiePullToRefreshLayout @JvmOverloads constructor(context: Context, attr
     : SimplePullToRefreshLayout(context, attrs, defStyle) {
 
     private var animationFile: Int = -1
+    private var animationFileName: String? = null
     private val lottieAnimationView by lazy {
         LottieAnimationView(context).apply {
-            if (animationFile == -1) {
+            if (animationFileName == null) {
                 throw IllegalStateException("Could not resolve an animation for your pull to refresh layout")
             }
 
-            setAnimation(animationFile)
+            setAnimation(animationFileName)
             repeatCount = LottieDrawable.INFINITE
             layoutParams = LayoutParams(ViewGroup.LayoutParams(MATCH_PARENT, triggerOffSetTop)).apply { type = ViewType.TOP_VIEW }
         }
@@ -25,7 +28,8 @@ class LottiePullToRefreshLayout @JvmOverloads constructor(context: Context, attr
 
     init {
         context.theme.obtainStyledAttributes(attrs, R.styleable.LottiePullToRefreshLayout, defStyle, 0).let { style ->
-            animationFile = style.getResourceId(R.styleable.LottiePullToRefreshLayout_pull_to_refresh_lottieFile, -1)
+            animationFileName = style.getString(R.styleable.LottiePullToRefreshLayout_pull_to_refresh_lottieFile)
+
             addView(lottieAnimationView)
             style.recycle()
         }

@@ -3,6 +3,7 @@
     <declare-styleable name="SimplePullToRefreshLayout">
         <attr name="max_offset_top" format="dimension"/>
         <attr name="trigger_offset_top" format="dimension"/>
+        <attr name="start_animation_offset" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="EasyPullLayout_LayoutParams">
@@ -13,6 +14,6 @@
     </declare-styleable>
 
     <declare-styleable name="LottiePullToRefreshLayout">
-        <attr name="pull_to_refresh_lottieFile" format="reference" />
+        <attr name="pull_to_refresh_lottieFile" format="string" />
     </declare-styleable>
 </resources>
