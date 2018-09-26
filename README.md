@@ -19,7 +19,7 @@ Tell `LottiePullToRefreshLayout` about your content view. `app:layout_type="cont
                                        android:layout_width="match_parent"
                                        android:layout_height="match_parent"
                                        app:max_offset_top="250dp"
-                                       app:pull_to_refresh_lottieFile="@raw/pull_to_refresh"
+                                       app:pull_to_refresh_lottieFile="pull_to_refresh.json"
                                        app:trigger_offset_top="125dp">
 
     <android.support.v7.widget.RecyclerView
@@ -35,7 +35,7 @@ Tell `LottiePullToRefreshLayout` about your content view. `app:layout_type="cont
 
 `max_offset_top`: Maximum scroll area for the pull to refresh
 `trigger_offset_top`: Cap the scroll area factor set a size that will tell when it has been fully pulled.
-`pull_to_refresh_lottieFile`: The Lottie file to use. (placed in the raw folder)
+`pull_to_refresh_lottieFile`: The Lottie file to use. (placed in the assets folder)
 
 ## Extensible
 
