@@ -6,6 +6,7 @@ import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
@@ -20,6 +21,8 @@ open class SimplePullToRefreshLayout @JvmOverloads constructor(context: Context,
     var triggerOffSetTop = 0
         private set
     var maxOffSetTop = 0
+        private set
+    var startAnimationOffset = 0
         private set
 
     private var downX = 0F
@@ -45,6 +48,7 @@ open class SimplePullToRefreshLayout @JvmOverloads constructor(context: Context,
 
             triggerOffSetTop = it.getDimensionPixelOffset(R.styleable.SimplePullToRefreshLayout_trigger_offset_top, defaultValue)
             maxOffSetTop = it.getDimensionPixelOffset(R.styleable.SimplePullToRefreshLayout_max_offset_top, defaultValue)
+            startAnimationOffset = it.getDimensionPixelOffset(R.styleable.SimplePullToRefreshLayout_start_animation_offset, defaultValue)
             it.recycle()
         }
     }
@@ -177,7 +181,7 @@ open class SimplePullToRefreshLayout @JvmOverloads constructor(context: Context,
     }
 
     private fun move() {
-        val pullFraction: Float = if (offsetY == 0F) 0F else if (triggerOffSetTop > offsetY) offsetY / triggerOffSetTop else 1F
+        val pullFraction: Float = if (offsetY == 0F) 0F else if ((triggerOffSetTop + startAnimationOffset) > offsetY) offsetY / (triggerOffSetTop + startAnimationOffset) else 1F
         offsetY = if (offsetY < 0) 0f else if (offsetY > maxOffSetTop) maxOffSetTop.toFloat() else offsetY
 
         onProgressListeners.forEach { it(pullFraction) }
